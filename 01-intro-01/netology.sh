@@ -2,4 +2,4 @@
 
 STUDENT_NAME="ElenaSovetova"
 
-echo "my name in ${STUDENT_NAME}"
+echo "my name in ${ElenaSovetova}"
