@@ -41,9 +41,9 @@
     done
     ```
 
-    ```bash
- while ((1==1))
- do
+    ```bash	
+   while ((1==1))
+   do
    curl https://localhost:4757
    if (($? != 0))
    then
@@ -58,38 +58,38 @@
 
 *
 	```bash
-hosts=(192.168.0.1 173.194.222.113 87.250.250.24)
-timeout=5
-for i in {1..5}
-do
-date >>hosts.log
-    for h in ${hosts[@]}
+    hosts=(192.168.0.1 173.194.222.113 87.250.250.24)
+    timeout=5
+    for i in {1..5}
     do
-	curl -Is --connect-timeout $timeout $h:80 >/dev/null
-        echo "    check" $h status=$? >>hosts.log
+    date >>hosts.log
+        for h in ${hosts[@]}
+        do
+	        curl -Is --connect-timeout $timeout $h:80 >/dev/null
+            echo "    check" $h status=$? >>hosts.log
+        done
     done
-done
 	```
 
 4.Необходимо дописать скрипт из предыдущего задания так, чтобы он выполнялся до тех пор, пока один из узлов не окажется недоступным. Если любой из узлов недоступен - IP этого узла пишется в файл error, скрипт прерывается
 *
 	```bash
-hosts=(192.168.0.1 173.194.222.113 87.250.250.24)
-timeout=5
-res=0
+    hosts=(192.168.0.1 173.194.222.113 87.250.250.24)
+    timeout=5
+    res=0
 
-while (($res == 0))
-do
-    for h in ${hosts[@]}
+    while (($res == 0))
     do
-	curl -Is --connect-timeout $timeout $h:80 >/dev/null
-	res=$?
-	if (($res != 0))
-	then
-	    echo "    ERROR on " $h status=$res >>hosts2.log
-	fi
+      for h in ${hosts[@]}
+      do
+	      curl -Is --connect-timeout $timeout $h:80 >/dev/null
+	      res=$?
+	      if (($res != 0))
+	      then
+	         echo "    ERROR on " $h status=$res >>hosts2.log
+	      fi
+      done
     done
-done
 	```
 
 
