@@ -39,7 +39,7 @@
 	fi
 	done
 	```
-*
+
 ```bash
  while ((1==1))
  do
