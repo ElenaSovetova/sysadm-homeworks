@@ -43,16 +43,16 @@
 * 
 
     ```bash	
-    while ((1==1))
-    do
-    curl https://localhost:4757
-    if (($? != 0))
-    then
-    date >> curl.log
-    else break
-    fi
-    sleep 5
-    done
+  while ((1==1))
+   do
+   curl https://localhost:4757
+   if (($? != 0))
+   then
+   date >> curl.log
+   else break
+   fi
+   sleep 5
+   done
     ```
 
 3.Необходимо написать скрипт, который проверяет доступность трёх IP: 192.168.0.1, 173.194.222.113, 87.250.250.242 по 80 порту и записывает результат в файл log. Проверять доступность необходимо пять раз для каждого узла.
