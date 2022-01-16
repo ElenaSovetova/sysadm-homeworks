@@ -73,7 +73,8 @@
 
 4.Необходимо дописать скрипт из предыдущего задания так, чтобы он выполнялся до тех пор, пока один из узлов не окажется недоступным. Если любой из узлов недоступен - IP этого узла пишется в файл error, скрипт прерывается
 
-*
+* 
+
   ```bash
     hosts=(192.168.0.1 173.194.222.113 87.250.250.24)
     timeout=5
@@ -83,12 +84,12 @@
     do
       for h in ${hosts[@]}
       do
-	      curl -Is --connect-timeout $timeout $h:80 >/dev/null
-	      res=$?
-	      if (($res != 0))
-	      then
-	         echo "    ERROR on " $h status=$res >>hosts2.log
-	      fi
+          curl -Is --connect-timeout $timeout $h:80 >/dev/null
+          res=$?
+          if (($res != 0))
+          then
+             echo "    ERROR on " $h status=$res >>hosts2.log
+          fi
       done
     done
   ```
